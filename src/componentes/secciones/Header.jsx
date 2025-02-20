@@ -1,13 +1,11 @@
 import Marquee from "react-fast-marquee"
 import logoJisa from "../../assets/imagen/LogoJisa.webp"
-import WhatsappIcon from "../../../public/icons/WhatsappIcon"
-import EnvelopeIcon from "../../../public/icons/EnvelopeIcon"
-import FlagPeru from "../../../public/icons/FlagPeru"
-import IconText from "../IconText"
+
+import WhatsappIcon from "../../assets/icons/WhatsappIcon"
+import EnvelopeIcon from "../../assets/icons/EnvelopeIcon"
+import FlagPeru from "../../assets/icons/FlagPeru"
 import SeparatorBar from "../SeparatorBar"
-
-
-
+import IconText from "../layout/IconText"
 
 
 function Header() {

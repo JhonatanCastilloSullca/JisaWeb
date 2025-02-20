@@ -1,118 +1,212 @@
-import CalendarIcon from "../../public/icons/CalendarIcon"
-import CameraIcon from "../../public/icons/CameraIcon"
-import FacebookIcon from "../../public/icons/FacebookIcon"
-import GroupUsers from "../../public/icons/GroupUsers"
-import MapDotIcon from "../../public/icons/MapDotIcon"
-import GridNumber from "../componentes/GridNumber"
-import HeaderTitle from "../componentes/HeaderTitle"
-import RowNumber from "../componentes/RowNumber"
+
 import SearchBar from "../componentes/SearchBar"
 import Hero from "../componentes/secciones/Hero"
-import SeparatorBarHorizontal from "../componentes/SeparatorBarHorizontal"
-import SubHeaderTitle from "../componentes/SubHeaderTitle"
+import AboutSection from "../componentes/secciones/AboutSection"
+import PackageSection from "../componentes/secciones/PackageSection"
+import PromocionSection from "../componentes/PromocionSection";
+import JisaTitleContent from "../componentes/layout/JisaTitleContent";
+import SeparatorBarHorizontal from "../componentes/SeparatorBarHorizontal";
+import HeaderTitle from "../componentes/layout/HeaderTitle";
+import { useState } from "react";
+import RowNumber from "../componentes/RowNumber"
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import FormContact from "../componentes/FormContact";
+import BlogSection from "../componentes/secciones/BlogSection";
+import SubHeaderTitle from "../componentes/layout/SubHeaderTitle";
+import TabButton from "../componentes/TabButton";
+import CalendarIcon from "../assets/icons/CalendarIcon";
+import FacebookIcon from "../assets/icons/FacebookIcon";
+import Testimonios from "../componentes/secciones/Testimonios";
+import TripAdvisorIcon from "../assets/icons/TripAdvisorIcon";
+import GoogleIcon from "../assets/icons/GoogleIcon";
+import ImageGrid from "../componentes/ImageGrid";
+
+
+const tours = [
+    {
+        titulo: "MACHUPICCHU",
+        slug: "machupicchu",
+        descripcion:
+            `Machu Picchu, la joya del Imperio Inca y una de las maravillas del mundo, te espera con sus imponentes montañas, historia fascinante y paisajes que te dejarán sin aliento...`,
+        cantidad: 7,
+        imagen: "https://jisaadventure.com/wp-content/uploads/2024/02/agencia-de-viaje-cusco-jisaadventure.webp",
+    },
+    {
+        titulo: "MARAS",
+        slug: "maras",
+        descripcion:
+            `Maras, famoso por sus salineras y paisajes impresionantes, te invita a descubrir la historia y la cultura andina...`,
+        cantidad: 5,
+        imagen: "https://jisaadventure.com/wp-content/uploads/2023/12/Aventura-Cuatrimotos-Salineras-Moray-Explora.webp",
+    },
+    {
+        titulo: "Lima",
+        slug: "Lima",
+        descripcion:
+            `Lima, la capital del Perú, ofrece una combinación única de historia, gastronomía y cultura vibrante...`,
+        cantidad: 4,
+        imagen: "https://jisaadventure.com/wp-content/uploads/2024/01/Descubre_Lima_Recorrido_Cultural.png",
+    },
+    {
+        titulo: "MARAS",
+        slug: "maras",
+        descripcion:
+            `Maras, famoso por sus salineras y paisajes impresionantes, te invita a descubrir la historia y la cultura andina...`,
+        cantidad: 5,
+        imagen: "https://jisaadventure.com/wp-content/uploads/2023/12/Aventura-Cuatrimotos-Salineras-Moray-Explora.webp",
+    },
+    {
+        titulo: "Lima",
+        slug: "Lima",
+        descripcion:
+            `Lima, la capital del Perú, ofrece una combinación única de historia, gastronomía y cultura vibrante...`,
+        cantidad: 4,
+        imagen: "https://jisaadventure.com/wp-content/uploads/2024/01/Descubre_Lima_Recorrido_Cultural.png",
+    },
+];
 
 const Home = () => {
+
+    const [formData, setFormData] = useState({
+        country: "",
+        phone: "",
+        name: "",
+        email: "",
+        travelDate: "",
+        additionalInfo: ""
+    });
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [activeTab, setActiveTab] = useState("tripadvisor");
+
+    const tabs = [
+        { id: "tripadvisor", label: "Tripadvisor", icon: TripAdvisorIcon, activeColor: "bg-JisaCyan" },
+        { id: "google", label: "Google", icon: GoogleIcon, activeColor: "bg-[#eb4939]" },
+    ];
+    const images = [
+        "https://jisaadventure.com/wp-content/uploads/2024/03/Ministerio_de_Comercio_Exterior_y_Turismo.webp",
+        "https://jisaadventure.com/wp-content/uploads/2024/03/Tripadvisor.webp",
+        "https://jisaadventure.com/wp-content/uploads/2024/03/Gercetur.webp",
+        "https://jisaadventure.com/wp-content/uploads/2024/03/Ministerio_de_Comercio_Exterior_y_Turismo.webp",
+        "https://jisaadventure.com/wp-content/uploads/2024/03/Tripadvisor.webp",
+        "https://jisaadventure.com/wp-content/uploads/2024/03/Ministerio_de_Comercio_Exterior_y_Turismo.webp",
+        "https://jisaadventure.com/wp-content/uploads/2024/03/Tripadvisor.webp",
+        "https://jisaadventure.com/wp-content/uploads/2024/03/Gercetur.webp",
+    ];
+
+
+
     return (
         <>
-            <>
-                <Hero />
-                <SearchBar />
-
-                <div className="w-full max-w-7xl mx-auto mt-24 mb-12">
-                    <div className="grid grid-cols-12 gap-4">
-                        <div className="col-span-7 h-auto flex flex-col items-start justify-center align-middle px-10">
-                            <span className="text-left text-JisaAmarillo font-medium text-lg" >JISA ADVENTURE</span>
-                            <HeaderTitle title={'Tours a Machu Picchu, Cusco y Perú 2024'} />
-                            <SeparatorBarHorizontal />
-                            <p className="text-left text-JisaGris font-light text-md py-4">
-                                La fundadora de Jisa Adventure, Felicia Acuña Salas,
-                                es una apasionada del turismo y amante de su país, Perú.
-                                Con una visión clara y determinación, decidió crear esta agencia
-                                para compartir la belleza y riqueza cultural de Perú con el mundo.
-                                Gracias a su experiencia como guía oficial de turismo,
-                                pudo diseñar experiencias únicas y auténticas para los
-                                viajeros que buscan descubrir la magia de Perú. Hoy en día,
-                                Jisa Adventure es reconocida por su excelencia en el servicio
-                                y por brindar momentos inolvidables a quienes eligen explorar
-                                este hermoso país con nosotros. ¡Únete a la aventura y descubre
-                                la historia que inspiró a Felicia a crear Jisa Adventure!
-                            </p>
-                        </div>
-                        <div className="col-span-5 h-auto flex flex-col items-start justify-center align-middle">
-                            <img src="src\assets\imagen\tourist-preview.png" alt="Jisa-Nosotros-Paquete" className="w-full" />
-                        </div>
-                    </div>
-                </div>
-
-                <div className="w-full max-w-7xl mx-auto mt-24 mb-12">
-                    <div className="flex-col justify-center flex items-center">
-                        <HeaderTitle title={'PAQUETES DESTACADOS'} />
-                        <SubHeaderTitle title={`En JISA ADVENTURE, nos preocupamos por cada detalle de tu travesía para que tu experiencia sea inolvidable. Nuestro equipo de asesores está siempre dispuesto a ayudarte a planificar el viaje ideal, adaptando cada tour a tus intereses y necesidades.`} />
-                        <SeparatorBarHorizontal />
-                    </div>
-                    <div className="w-full max-w-6xl mx-auto">
-                        <GridNumber col={12} className="gap-x-11">
-                            <RowNumber col={4}>
-                                <div className="group w-full h-[512px] flex flex-col bg-cover bg-center rounded-xl shadow-lg relative overflow-hidden transition-all duration-300"
-                                    style={{ backgroundImage: `url(https://jisaadventure.com/wp-content/uploads/2024/02/agencia-de-viaje-cusco-jisaadventure.webp)` }}>
-
-                                    <div className="absolute inset-0 bg-JisaGris/65 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
-
-                                    <div className="px-6 py-1 bg-JisaCyan rounded-md w-min absolute top-3 left-3 text-sm font-semibold text-white z-10">
-                                        Grupal
-                                    </div>
-
-                                    <div className="absolute top-10 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                                        <div className="flex flex-col gap-4">
-                                            <a href="#" className="p-2   transition">
-                                                <GroupUsers size={24} className="text-white hover:text-JisaCyan transition duration-300" />
-                                            </a>
-                                            <a href="#" className="p-2   transition">
-                                                <CalendarIcon size={24} className="text-white hover:text-JisaCyan transition duration-300" />
-                                            </a>
-                                            <a href="#" className="p-2   transition">
-                                                <CameraIcon size={24} className="text-white hover:text-JisaCyan transition duration-300" />
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div className="bg-white absolute bottom-0 w-full flex flex-col py-2 rounded-b-xl transition-all duration-300  z-10">
-                                        <div className="flex gap-x-2 text-JisaGris/30 px-4 items-center">
-                                            <MapDotIcon size={14} />
-                                            <div className="text-xs font-medium">Montaña de Colores Palccoyo, Cusco</div>
-                                        </div>
-
-                                        <div className="text-left font-medium text-base ps-4 text-JisaGris/80">
-                                            Rainbow Mountain Vinicunca Tour (Group Service)
-                                        </div>
-                                        <div className="max-h-0 overflow-hidden group-hover:max-h-24 transition-all duration-500 ease-in-out ps-4">
-                                            <div className="mt-2 w-[90%] self-center border-t border-JisaGris/20"></div>
-                                            <div className="flex flex-col">
-                                                <span className="text-base font-semibold text-JisaGris/50">Desde</span>
-                                                <span className="text-xl font-bold text-JisaVerde">$999.00</span>
+            <Hero />
+            <SearchBar />
+            <AboutSection />
+            <PackageSection />
+            <div className="w-full relative mx-auto py-16 bg-cover bg-center" style={{ backgroundImage: `url(${tours[activeIndex].imagen})` }}>
+                <div className="absolute inset-0 bg-black/75 opacity-100 rounded-xl"></div>
+                <div className="relative w-full max-w-7xl mx-auto">
+                    <div className="grid grid-cols-8">
+                        <RowNumber col={3} className="py-5">
+                            <div className="flex flex-col pt-4 ps-14 pe-20">
+                                <span className="text-left text-white font-semibold text-xl">DESTINOS</span>
+                                <span className="text-left text-white font-bold text-5xl">{tours[activeIndex].titulo}</span>
+                                <SeparatorBarHorizontal />
+                                <p className="text-base font-light my-4 text-white min-h-72">
+                                    {tours[activeIndex].descripcion}
+                                </p>
+                                <a href="#" className="text-white font-bold text-md">
+                                    ({tours[activeIndex].cantidad}) Tours Disponibles
+                                </a>
+                            </div>
+                        </RowNumber>
+                        <RowNumber col={5}>
+                            <div className="w-full h-full px-10 swiper-destino">
+                                <Swiper
+                                    slidesPerView={2.3}
+                                    autoplay={{
+                                        delay: 2500,
+                                        disableOnInteraction: false,
+                                    }}
+                                    loop={true}
+                                    spaceBetween={30}
+                                    navigation={true}
+                                    onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+                                    modules={[Autoplay, Navigation]}
+                                    className="mySwiper w-full h-full"
+                                >
+                                    {tours.map((tour, index) => (
+                                        <SwiperSlide key={index}>
+                                            <div className="w-full h-full bg-red-200 rounded-2xl">
+                                                <img src={tour.imagen} alt={tour.titulo} className=" object-center w-full h-full object-cover rounded-2xl" />
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                            </RowNumber>
-                            <RowNumber col={4}>
-                                <div className="w-full h-20 bg-red-100">
-
-                                </div>
-                            </RowNumber>
-                            <RowNumber col={4}>
-                                <div className="w-full h-20 bg-red-100">
-
-                                </div>
-                            </RowNumber>
-                        </GridNumber>
+                                        </SwiperSlide>
+                                    ))}
+                                </Swiper>
+                            </div>
+                        </RowNumber>
                     </div>
                 </div>
-            </>
-        </>
-    )
-}
+            </div>
 
-export default Home
+
+            <PackageSection />
+            <PromocionSection />
+            <div className="w-full max-w-7xl mx-auto mt-24 mb-12">
+                <div className="grid grid-cols-12 gap-4">
+                    <div className="col-span-7 h-auto flex flex-col items-start justify-center align-middle px-10 ">
+                        <div className="ps-10 pe-32">
+                            <SeparatorBarHorizontal />
+                            <HeaderTitle title={'CONTÁCTANOS'} />
+                            <JisaTitleContent contenido={`¿Listo para descubrir la belleza de Perú? Ponte en contacto con nosotros y hagamos realidad el viaje de tus sueños.`} />
+                        </div>
+                        <div className="ps-10 pe-10 w-full">
+                            <FormContact />
+                        </div>
+                    </div>
+                    <div className="col-span-5 h-auto flex flex-col items-start justify-center align-middle">
+                        <img src="src\assets\imagen\tourist-preview.png" alt="Jisa-Nosotros-Paquete" className="w-full" />
+                    </div>
+                </div>
+            </div>
+            <BlogSection />
+            <div className="w-full max-w-7xl mx-auto my-24  mb-12 ">
+                <div className="flex-col justify-center flex items-center py-10">
+                    <HeaderTitle title={'Reseñas de Nuestros Clientes'} />
+                    <SubHeaderTitle title={`Descubre las historias y testimonios de aquellos que han viajado con Jisa Adventure y han experimentado momentos inolvidables en los hermosos destinos de Perú.`} />
+                    <SeparatorBarHorizontal />
+                </div>
+
+                <div>
+                    <ul className="flex flex-wrap justify-center text-sm font-medium text-center text-JisaGris/50">
+                        {tabs.map((tab) => (
+                            <li key={tab.id} className="me-2">
+                                <TabButton
+                                    {...tab}
+                                    isActive={activeTab === tab.id}
+                                    onClick={setActiveTab}
+                                />
+                            </li>
+                        ))}
+                    </ul>
+
+                    <div className="mt-4">
+                        {activeTab === "tripadvisor" ? <Testimonios marca={'Tripadvisor'} /> : <Testimonios marca={'Google'} />}
+                    </div>
+                </div>
+            </div>
+            <div className="w-full max-w-7xl mx-auto my-24 pb-24 mb-12">
+                <ImageGrid images={images} />
+            </div>
+        </>
+    );
+};
+
+export default Home;

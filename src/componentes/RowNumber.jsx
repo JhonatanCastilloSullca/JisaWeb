@@ -1,6 +1,6 @@
-const RowNumber = ({ col, children }) => {
+const RowNumber = ({ col, children, className = "" }) => {
     return (
-        <div className={`col-span-${col} h-auto flex `}>
+        <div className={`col-span-${col} h-auto flex ${className}`}>
             {children}
         </div>
     );

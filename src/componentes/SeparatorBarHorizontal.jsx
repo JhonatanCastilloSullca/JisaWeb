@@ -1,8 +1,5 @@
-
 const SeparatorBarHorizontal = () => {
-    return (
-        <div className="mt-2 w-20 border-t-6 border-JisaAmarillo"></div>
-    )
-}
+    return <div className={`mt-2 mb-4 w-20 border-t-6 border-JisaAmarillo`}></div>;
+};
 
-export default SeparatorBarHorizontal
+export default SeparatorBarHorizontal;

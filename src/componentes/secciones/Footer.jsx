@@ -1,10 +1,16 @@
 
-import FacebookIcon from "../../../public/icons/FacebookIcon"
-import GoogleIcon from "../../../public/icons/GoogleIcon"
-import InstagramIcon from "../../../public/icons/InstagramIcon"
-import TripAdvisorIcon from "../../../public/icons/TripAdvisorIcon"
+import FacebookIcon from "../../assets/icons/FacebookIcon";
+import GoogleIcon from "../../assets/icons/GoogleIcon"
+import InstagramIcon from "../../assets/icons/InstagramIcon"
+import TripAdvisorIcon from "../../assets/icons/TripAdvisorIcon"
 import logoJisa from "../../assets/imagen/LogoJisaSecundario.webp"
 import FooterJisa from "../../assets/imagen/Footer-Jisa-Adventure-Caminante.webp"
+import IconText from "../layout/IconText";
+import EnvelopeIcon from "../../assets/icons/EnvelopeIcon";
+import PhoneIcon from "../../assets/icons/PhoneIcon";
+import MapDotIcon from "../../assets/icons/MapDotIcon";
+import ClockIcon from "../../assets/icons/ClockIcon";
+
 
 function Footer() {
     return (
@@ -53,8 +59,19 @@ function Footer() {
                             </ul>
                         </div>
                     </div>
-                    <div className="col-span-4 bg-green-500 p-4 text-white">
-
+                    <div className="col-span-4  p-4 text-white">
+                        <div className="flex flex-col gap-y-6">
+                            <div className="flex flex-col gap-y-2">
+                                <h4 className="font-semibold text-base">Asesor de venta</h4>
+                                <IconText icon={EnvelopeIcon} text="info@jisaadventure.com" />
+                                <IconText icon={PhoneIcon} text="999 999 999" />
+                            </div>
+                            <div className="flex flex-col gap-y-2">
+                                <h4 className="font-semibold text-base">Asesor de venta</h4>
+                                <IconText icon={MapDotIcon} text="Calle Garcilaso, 265  Cusco, Perú" />
+                                <IconText icon={ClockIcon} text="08:00a.m - 8:00p.m" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

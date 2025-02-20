@@ -1,5 +1,3 @@
-
-
 const SearchBar = () => {
     return (
         <div className="w-full max-w-7xl mx-auto -mt-12 z-30 relative">

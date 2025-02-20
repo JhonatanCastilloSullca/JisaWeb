@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom"
 import Header from "./secciones/Header"
 import Footer from "./secciones/Footer"
-
 function Layout() {
     return (
         <>
