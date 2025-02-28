@@ -20,10 +20,10 @@ function Footer() {
             </div>
             <div className="bg-black w-full">
                 <div className="w-full max-w-7xl grid grid-cols-12 gap-4 mx-auto">
-                    <div className="col-span-4 p-4 text-white flex flex-col px-8">
+                    <div className="md:col-span-4 col-span-12 p-4 text-white flex flex-col px-8">
                         <img src={logoJisa} alt="Logo Jisa" className="h-32 object-contain py-2" />
                         <div>
-                            <p className="text-sm p-4 pt-2">
+                            <p className="text-sm p-4 pt-2 md:text-left text-center">
                                 ¡Conozca a nuestros expertos en planificación de viajes! En Jisa Adventure, contamos con un equipo apasionado y conocedor de cada destino en Perú.
                             </p>
                         </div>
@@ -34,10 +34,10 @@ function Footer() {
                             <FacebookIcon size={30} className="" />
                         </div>
                     </div>
-                    <div className="col-span-4 p-4 text-white px-12">
-                        <h4 className="font-bold text-xl">Jisa Adventure</h4>
-                        <div className="lista-menu-footer ps-4 py-2">
-                            <ul className="text-lg font-medium">
+                    <div className="md:col-span-4 col-span-12 p-4 text-white px-12">
+                        <h4 className="font-bold text-xl md:text-left text-center">Jisa Adventure</h4>
+                        <div className="lista-menu-footer ps-4 py-2 md:">
+                            <ul className="text-lg font-medium text-center">
                                 <li>
                                     <a href="#">Inicio</a>
                                 </li>
@@ -59,7 +59,7 @@ function Footer() {
                             </ul>
                         </div>
                     </div>
-                    <div className="col-span-4  p-4 text-white">
+                    <div className="md:col-span-4 col-span-12  p-4 text-white px-12">
                         <div className="flex flex-col gap-y-6">
                             <div className="flex flex-col gap-y-2">
                                 <h4 className="font-semibold text-base">Asesor de venta</h4>

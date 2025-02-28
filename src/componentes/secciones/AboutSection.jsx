@@ -1,14 +1,14 @@
 import HeaderTitle from "../layout/HeaderTitle"
-import JisaTitleContent from "../layout/JisaTitleContent"
+import JisaTitleContentVerde from "../layout/JisaTitleContentVerde"
 import ParrafoContent from "../layout/ParrafoContent"
 import SeparatorBarHorizontal from "../SeparatorBarHorizontal"
 
-const AboutSection = () => {
+const AboutSection = ({ id }) => {
     return (
-        <div className="w-full max-w-7xl mx-auto mt-24 mb-12">
+        <div id={id} className="w-full max-w-7xl mx-auto mt-24 mb-12">
             <div className="grid grid-cols-12 gap-4">
-                <div className="col-span-7 h-auto flex flex-col items-start justify-center align-middle px-10">
-                    <JisaTitleContent contenido={`JISA ADVENTURE`} />
+                <div className="md:col-span-7 col-span-12 h-auto flex flex-col md:items-start items-center justify-center align-middle px-10">
+                    <JisaTitleContentVerde contenido={`JISA ADVENTURE`} />
                     <HeaderTitle title={'Tours a Machu Picchu, Cusco y Perú 2024'} />
                     <SeparatorBarHorizontal />
                     <ParrafoContent
@@ -25,8 +25,8 @@ const AboutSection = () => {
                                 la historia que inspiró a Felicia a crear Jisa Adventure!`}
                     />
                 </div>
-                <div className="col-span-5 h-auto flex flex-col items-start justify-center align-middle">
-                    <img src="src\assets\imagen\tourist-preview.png" alt="Jisa-Nosotros-Paquete" className="w-full" />
+                <div className="md:col-span-5 col-span-12 h-auto flex flex-col md:items-start items-center justify-center align-middle">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/044/248/881/small_2x/young-tourist-with-backpack-and-map-png.png" alt="Jisa-Nosotros-Paquete" className="w-full " />
                 </div>
             </div>
         </div>

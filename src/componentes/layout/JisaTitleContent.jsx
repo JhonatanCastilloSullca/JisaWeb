@@ -1,6 +1,6 @@
 const JisaTitleContent = ({ contenido }) => {
     return (
-        <span className="text-left text-JisaAmarillo font-medium text-lg" >{contenido}</span>
+        <span className="md:text-left text-center text-JisaAmarillo font-medium text-lg" >{contenido}</span>
     )
 }
 

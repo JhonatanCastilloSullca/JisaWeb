@@ -3,9 +3,9 @@ import 'swiper/css';
 import { Autoplay } from 'swiper/modules';
 import HeroSection from '../HeroSection';
 
-function Hero() {
+function Hero({ id }) {
     return (
-        <div className="h-auto w-full relative top-0">
+        <div id={id} className="h-auto w-full relative top-0">
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}

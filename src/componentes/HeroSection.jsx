@@ -8,7 +8,7 @@ const HeroSection = ({
 }) => {
     return (
         <div
-            className="h-screen bg-cover bg-center relative flex flex-col justify-end items-center text-white text-center p-4 py-32"
+            className="md:h-screen h-auto bg-cover bg-center relative flex flex-col justify-end items-center text-white text-center p-4 md:py-32 py-16"
             style={{ backgroundImage: `url(${backgroundImage})` }}
         >
             <div
@@ -19,9 +19,9 @@ const HeroSection = ({
             {/* Contenido */}
             <div className="relative z-10 max-w-[1440px] w-full flex flex-col">
                 <div className="grid grid-cols-5 gap-4">
-                    <div className="col-span-3 flex flex-col items-start">
-                        <h1 className="text-7xl text-left font-bold mb-4">{title}</h1>
-                        <p className="text-xl mb-6 w-full text-left pe-72">{description}</p>
+                    <div className="md:col-span-3 col-span-5 flex flex-col md:items-start items-center">
+                        <h1 className="md:text-7xl text-5xl md:w-full  md:text-left text-center font-bold mb-4">{title}</h1>
+                        <p className="text-xl mb-6 w-full md:text-left text-center md:pe-72">{description}</p>
                         {buttonText && buttonLink && (
                             <a
                                 href={buttonLink}

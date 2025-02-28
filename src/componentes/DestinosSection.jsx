@@ -8,13 +8,16 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import CardDestinos from "../componentes/CardDestinos"
 import { useState } from "react"
+import SeparatorBarHorizontalCyan from "./SeparatorBarHorizontalVerde";
 
 const tours = [
     {
         titulo: "MACHUPICCHU",
         slug: "machupicchu",
         descripcion:
-            `Machu Picchu, la joya del Imperio Inca y una de las maravillas del mundo, te espera con sus imponentes montañas, historia fascinante y paisajes que te dejarán sin aliento...`,
+            `Machu Picchu, la joya del Imperio Inca y una de las maravillas del mundo, te espera con sus imponentes montañas, historia fascinante y paisajes que te dejarán sin aliento. Este destino emblemático ofrece diversas formas de explorarlo, desde recorridos guiados por la ciudadela hasta rutas de trekking que revelan su belleza oculta.
+
+Explora nuestras opciones de tours y elige la experiencia que más se adapte a tu estilo de aventura. ¡Prepárate para un viaje inolvidable a la cuna de la cultura andina!`,
         cantidad: 7,
         imagen: "https://jisaadventure.com/wp-content/uploads/2024/02/agencia-de-viaje-cusco-jisaadventure.webp",
     },
@@ -51,36 +54,44 @@ const tours = [
         imagen: "https://jisaadventure.com/wp-content/uploads/2024/01/Descubre_Lima_Recorrido_Cultural.png",
     },
 ];
-const DestinosSection = () => {
+const DestinosSection = ({ id }) => {
     const [activeIndex, setActiveIndex] = useState(0);
+
     return (
-        <div className="w-full relative mx-auto py-16 bg-cover bg-center" style={{ backgroundImage: `url(${tours[activeIndex].imagen})` }}>
-            <div className="absolute inset-0 bg-black/75 opacity-100 rounded-xl"></div>
+        <div id={id} className="w-full relative mx-auto py-16 bg-cover bg-center" style={{ backgroundImage: `url(${tours[activeIndex].imagen})` }}>
+            <div className="absolute inset-0 bg-black/75 opacity-100 "></div>
             <div className="relative w-full max-w-7xl mx-auto">
-                <GridNumber col={8}>
-                    <RowNumber col={3} className="py-5">
-                        <div className="flex flex-col pt-4 ps-14 pe-20">
-                            <span className="text-left text-white font-semibold text-xl">DESTINOS</span>
-                            <span className="text-left text-white font-bold text-5xl">{tours[activeIndex].titulo}</span>
-                            <SeparatorBarHorizontal />
-                            <p className="text-base font-light my-4 text-white min-h-72">
+                <div className="grid grid-cols-8">
+                    <div className={`md:col-span-3 col-span-12 `}>
+
+                        <div className="flex flex-col justify-center md:items-start items-center pt-4 md:ps-14 md:pe-20 px-6">
+                            <span className="md:text-left text-white font-semibold text-xl text-center">DESTINOS</span>
+                            <span className="md:text-left text-white font-bold text-5xl text-center">{tours[activeIndex].titulo}</span>
+                            <SeparatorBarHorizontalCyan />
+                            <p className="md:text-base text-sm font-light my-4 text-white min-h-72 md:text-left text-center">
                                 {tours[activeIndex].descripcion}
                             </p>
-                            <a href="#" className="text-white font-bold text-md">
+                            <a href="#" className="text-white font-bold text-md md:text-left text-center py-6">
                                 ({tours[activeIndex].cantidad}) Tours Disponibles
                             </a>
                         </div>
-                    </RowNumber>
-                    <RowNumber col={5}>
+                    </div>
+                    <div className={`md:col-span-5 col-span-12 `}>
                         <div className="w-full h-full px-10 swiper-destino">
                             <Swiper
-                                slidesPerView={2.3}
+                                breakpoints={{
+                                    320: { slidesPerView: 1, spaceBetween: 10 },
+                                    480: { slidesPerView: 1.5, spaceBetween: 15 },
+                                    640: { slidesPerView: 2, spaceBetween: 20 },
+                                    768: { slidesPerView: 2.3, spaceBetween: 25 },
+                                    1024: { slidesPerView: 2.3, spaceBetween: 30 },
+                                    1280: { slidesPerView: 2.3, spaceBetween: 35 },
+                                }}
                                 autoplay={{
                                     delay: 2500,
                                     disableOnInteraction: false,
                                 }}
                                 loop={true}
-                                spaceBetween={30}
                                 navigation={true}
                                 onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
                                 modules={[Autoplay, Navigation]}
@@ -88,15 +99,15 @@ const DestinosSection = () => {
                             >
                                 {tours.map((tour, index) => (
                                     <SwiperSlide key={index}>
-                                        <div className="w-full h-full bg-red-200 rounded-2xl">
+                                        <div className="w-full md:h-full h-[440px] bg-red-200 rounded-2xl">
                                             <img src={tour.imagen} alt={tour.titulo} className=" object-center w-full h-full object-cover rounded-2xl" />
                                         </div>
                                     </SwiperSlide>
                                 ))}
                             </Swiper>
                         </div>
-                    </RowNumber>
-                </GridNumber>
+                    </div>
+                </div>
             </div>
         </div>
     )

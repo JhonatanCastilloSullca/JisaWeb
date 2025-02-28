@@ -1,6 +1,6 @@
 const ImageGrid = ({ images }) => {
     return (
-        <div className="grid grid-cols-4 gap-10">
+        <div className="grid md:grid-cols-4 grid-cols-3 gap-10 px-6">
             {images.map((src, index) => (
                 <div key={index} className="col-span-1">
                     <img

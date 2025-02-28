@@ -1,5 +1,5 @@
-import GoogleTestimonio from "../GoogleTestimonio";
-import TripadvisorReview from "../TripTestimonio";
+import GoogleTestimonio from "./GoogleTestimonio";
+import TripadvisorReview from "./TripTestimonio";
 
 import React, { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -175,12 +175,20 @@ const Testimonios = ({ marca }) => {
 
     return (
         <div className="w-full max-w-7xl mx-auto my-24 pb-24 mb-12">
-            <div className="grid grid-cols-12 items-center">
-                <div className="col-span-9">
+            <div className="grid grid-cols-12 items-center px-6">
+                <div className="md:col-span-9 col-span-12">
                     <div className="">
                         <Swiper
-                            slidesPerView={3}
-                            spaceBetween={30}
+
+
+                            breakpoints={{
+                                320: { slidesPerView: 1, spaceBetween: 10 },
+                                480: { slidesPerView: 1.5, spaceBetween: 15 },
+                                640: { slidesPerView: 2, spaceBetween: 20 },
+                                768: { slidesPerView: 2.3, spaceBetween: 25 },
+                                1024: { slidesPerView: 3, spaceBetween: 30 },
+                                1280: { slidesPerView: 3, spaceBetween: 30 },
+                            }}
                             pagination={{
                                 clickable: true,
                             }}
@@ -206,19 +214,19 @@ const Testimonios = ({ marca }) => {
                     <div className="flex justify-center py-4">
 
                         {marca === "Tripadvisor" ? (
-                            <p>La evaluación general en <span className="text-JisaCyan font-bold">Tripadvisor </span>es <span className="text-JisaCyan font-bold">5.0 </span> de 5,en base a<span className="text-JisaCyan font-bold"> 479 reseñas </span></p>
+                            <p className="text-center" >La evaluación general en <span className="text-JisaCyan font-bold">Tripadvisor </span>es <span className="text-JisaCyan font-bold">5.0 </span> de 5,en base a<span className="text-JisaCyan font-bold"> 479 reseñas </span></p>
                         ) : (
-                            <p>La evaluación general en <span className="text-[#eb4939] font-bold">Tripadvisor </span>es <span className="text-[#eb4939] font-bold">5.0 </span> de 5,en base a<span className="text-[#eb4939] font-bold"> 479 reseñas </span></p>
+                            <p className="text-center" >La evaluación general en <span className="text-[#eb4939] font-bold">Tripadvisor </span>es <span className="text-[#eb4939] font-bold">5.0 </span> de 5,en base a<span className="text-[#eb4939] font-bold"> 479 reseñas </span></p>
 
                         )}
                     </div>
                 </div>
-                <div className="col-span-3 flex justify-center">
+                <div className="md:col-span-3 col-span-12 flex justify-center">
 
                     {marca === "Tripadvisor" ? (
-                        <img src="src\assets\imagen\tourist-preview.png" alt="Jisa-Nosotros-Paquete" className="w-44" />
+                        <img src="https://static.vecteezy.com/system/resources/thumbnails/044/248/881/small_2x/young-tourist-with-backpack-and-map-png.png" alt="Jisa-Nosotros-Paquete" className="w-44" />
                     ) : (
-                        <img src="src\assets\imagen\LogoJisaSecundario.webp" alt="Jisa-Nosotros-Paquete" className="w-44" />
+                        <img src="https://static.vecteezy.com/system/resources/thumbnails/044/248/881/small_2x/young-tourist-with-backpack-and-map-png.png" alt="Jisa-Nosotros-Paquete" className="w-44" />
 
                     )}
                 </div>

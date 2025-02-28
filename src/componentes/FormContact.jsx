@@ -21,9 +21,9 @@ function FormContact() {
 
     return (
         <div className="w-full  rounded-xl">
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-10">
+            <form onSubmit={handleSubmit(onSubmit)} className="md:space-y-10 space-y-4">
                 <div className="gap-2 grid grid-cols-12 ">
-                    <div className="col-span-2">
+                    <div className="md:col-span-2 col-span-4">
                         <select
                             {...register("phoneCode", { required: "Selecciona un código de país" })}
                             className=" w-full px-3 py-2 border-b-1 border-JisaCyan rounded-sm text-black/40 "
@@ -37,7 +37,7 @@ function FormContact() {
                             ))}
                         </select>
                     </div>
-                    <div className="col-span-5">
+                    <div className="md:col-span-5 col-span-8">
                         <input
                             type="tel"
                             placeholder="Telefono"
@@ -46,7 +46,7 @@ function FormContact() {
                         />
                     </div>
 
-                    <div className="col-span-5">
+                    <div className="md:col-span-5 col-span-12">
                         <input
                             type="text"
                             placeholder="Nombre"
@@ -86,14 +86,14 @@ function FormContact() {
                     ></textarea>
                     {errors.message && <p className="text-red-500 text-sm">{errors.message.message}</p>}
                 </div>
-
-                {/* Botón de Enviar */}
-                <button
-                    type="submit"
-                    className=" cursor-pointer px-16 py-2 bg-JisaCyan text-white font-bold text-lg rounded-lg shadow-md hover:bg-gray-200 hover:text-JisaGris transition"
-                >
-                    Enviar
-                </button>
+                <div className="flex md:justify-start justify-center">
+                    <button
+                        type="submit"
+                        className=" cursor-pointer px-16 py-2 bg-JisaCyan text-white font-bold text-lg rounded-lg shadow-md hover:bg-gray-200 hover:text-JisaGris transition"
+                    >
+                        Enviar
+                    </button>
+                </div>
 
             </form>
         </div>

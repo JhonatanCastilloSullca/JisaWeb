@@ -1,8 +1,8 @@
 
 const SubHeaderTitle = ({ title }) => {
     return (
-        <div className="px-18">
-            <h3 className=" text-JisaGris font-light text-lg text-center" >{title}</h3>
+        <div className="md:px-18 px-6">
+            <h3 className=" text-JisaGris font-light md:text-lg text-sm py-2  text-center" >{title}</h3>
         </div>
     )
 }

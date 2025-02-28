@@ -5,16 +5,18 @@ import SubHeaderTitle from "../layout/SubHeaderTitle"
 import RowNumber from "../RowNumber"
 import SeparatorBarHorizontal from "../SeparatorBarHorizontal"
 
-const BlogSection = () => {
+const BlogSection = ({ id }) => {
     return (
-        <div className="w-full max-w-7xl mx-auto my-24 pb-24 mb-12 ">
+        <div id={id} className="w-full max-w-7xl mx-auto md:my-24 my-12 pb-24 mb-12 ">
             <div className="flex-col justify-center flex items-center py-10">
                 <HeaderTitle title={'¿TIENES INTERÉS EN CUSCO?'} />
                 <SubHeaderTitle title={`En JISA ADVENTURE, nos preocupamos por cada detalle de tu travesía para que tu experiencia sea inolvidable. Nuestro equipo de asesores está siempre dispuesto a ayudarte a planificar el viaje ideal, adaptando cada tour a tus intereses y necesidades.`} />
                 <SeparatorBarHorizontal />
             </div>
-            <div className="w-full max-w-6xl mx-auto">
-                <GridNumber col={12} className="gap-x-11">
+
+            <div className="w-full max-w-6xl mx-auto md:px-0 px-4">
+
+                <GridNumber col={12} className="md:gap-x-11 gap-x-0">
                     <RowNumber col={4}>
                         <BlogCard
                             title="Grupal"
